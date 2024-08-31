@@ -1,0 +1,12 @@
+import { createBrowserRouter } from "react-router-dom";
+import { isAuthenticad, privateRoutes, publicRoutes } from "./routes";
+import { RouteObject } from "react-router-dom";
+
+export function returnRoutes(): RouteObject[] {
+  if (isAuthenticad) {
+    return privateRoutes;
+  }
+  return publicRoutes;
+}
+
+export const router = createBrowserRouter(returnRoutes());
