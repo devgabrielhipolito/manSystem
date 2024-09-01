@@ -4,7 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { authenticateLogin } from "../../redux/actions/authenticationAction";
 import { authSchema, AuthSchema } from "../../schemas/auth";
+import { createTheme, FilledInput, InputLabel } from "@mui/material";
+import { Input } from "../../components/Inputs/index";
+import { Box } from "@mui/material";
+import { yellow } from "@mui/material/colors";
 export const Login = (): ReactElement => {
+  const theme = createTheme();
   const {
     control,
     register,
@@ -16,28 +21,21 @@ export const Login = (): ReactElement => {
 
   const dispatch = useDispatch();
   function handleLogin(data: AuthSchema) {
-    console.log(data)
-
+    authenticateLogin("2");
   }
   return (
-    <div>
-      <h1>ManSys Login</h1>
-      <form onSubmit={handleSubmit(handleLogin)} action="">
-        <label htmlFor="">
-          <p>Seu email</p>
-          <input {...register("email")}  type="text" placeholder="digite seu email" />
-        </label>
-        <label htmlFor="">
-          <p>Sua senha</p>
-          <input
-            {...register("password")}
-            type="password"
-            placeholder="digite sua senha"
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <Box
+      display={"flex"}
+      alignContent={"center"}
+      justifyContent="center"
+      flexDirection="column"
+      bgcolor="#fff"
+      height="100vh"
+      width="100%"
+    >
+      <h1>Login</h1>
+      <Input />
+    </Box>
   );
 };
 
