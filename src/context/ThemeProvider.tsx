@@ -36,7 +36,6 @@ export const AppThemeProvider: React.FC<IContext> = ({ children }) => {
           margin={0}
           padding={0}
           boxSizing={"border-box"}
-          bgcolor={themeSelector.palette.background.default}
         >
           {children}
         </Box>

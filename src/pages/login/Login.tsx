@@ -8,6 +8,7 @@ import { createTheme, FilledInput, InputLabel } from "@mui/material";
 import { Input } from "../../components/Inputs/index";
 import { Box } from "@mui/material";
 import { yellow } from "@mui/material/colors";
+import ComponentLogin from "../../components/Login";
 export const Login = (): ReactElement => {
   const theme = createTheme();
   const {
@@ -26,15 +27,17 @@ export const Login = (): ReactElement => {
   return (
     <Box
       display={"flex"}
-      alignContent={"center"}
+      alignItems={"center"}
       justifyContent="center"
       flexDirection="column"
-      bgcolor="#fff"
       height="100vh"
       width="100%"
     >
-      <h1>Login</h1>
-      <Input />
+      <Box width="30%">
+        <h1 id="login-title">Login</h1>
+        <p id="login-paragrafh">Faça seu login para gerenciar os seus serivços</p>
+        <ComponentLogin />
+      </Box>
     </Box>
   );
 };

@@ -6,7 +6,7 @@ import { router } from "./routes/index";
 import store from "./redux/store/store";
 import Login from "./pages/login/Login";
 import { AppThemeProvider } from "./context/ThemeProvider";
-import "./assets/reset.css";
+import "./assets/style.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -4,13 +4,20 @@ import TextField from "@mui/material/TextField";
 
 export const Input = () => {
   return (
-    <Box
-      component="form"
-      sx={{ "& > :not(style)": { m: 1, width: "25ch" } }}
-      noValidate
-      autoComplete="on"
-    >
-      <TextField id="input-login" label="Seu email" variant="outlined" />
+    <Box component="form" noValidate autoComplete="on">
+      <TextField
+        id="input-email"
+        type="text"
+        label="Seu email"
+        variant="outlined"
+      />
+      <TextField
+        id="input-login"
+        type="password"
+        label="Sua senha"
+        variant="outlined"
+      />
+
     </Box>
   );
 };
