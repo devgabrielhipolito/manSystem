@@ -4,12 +4,12 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { themeSelector } from "../../redux/reducers/themeReducer";
 import { useDispatch } from "react-redux";
-import { Light } from "../../theme";
+import { teste } from "../../theme";
 
 export default function ComponentLogin() {
   const dispatch = useDispatch();
   function handle() {
-    dispatch(themeSelector(Light));
+    dispatch(themeSelector(teste));
   }
 
   return (
