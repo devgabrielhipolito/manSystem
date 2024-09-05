@@ -7,12 +7,13 @@ import store from "./redux/store/store";
 import Login from "./pages/login/Login";
 import { AppThemeProvider } from "./context/ThemeProvider";
 import "./assets/style.css";
+import App from "./App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AppThemeProvider>
       <Provider store={store}>
-        <Login />
+        <App/>
       </Provider>
     </AppThemeProvider>
   </StrictMode>
