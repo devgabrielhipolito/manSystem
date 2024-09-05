@@ -1,1 +1,1 @@
-export {Light,teste} from './Light'
+export { Light } from "./Light";

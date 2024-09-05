@@ -1,13 +1,9 @@
 body,
-html,* {
+html,
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-#login-title {
-  margin-right: auto;
-}
-#login-paragrafh{
-  margin-top: 20px;
+  text-decoration: none;
+  list-style: none;
 }

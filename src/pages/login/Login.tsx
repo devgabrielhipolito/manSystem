@@ -4,13 +4,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { authenticateLogin } from "../../redux/actions/authenticationAction";
 import { authSchema, AuthSchema } from "../../schemas/auth";
-import { createTheme, FilledInput, InputLabel } from "@mui/material";
-import { Input } from "../../components/Inputs/index";
-import { Box } from "@mui/material";
-import { yellow } from "@mui/material/colors";
+import { Box, styled, Typography } from "@mui/material";
 import ComponentLogin from "../../components/Login";
+import { LayoutBase } from "../../assets/themes/base/layoutBase/LayoutBase";
+import { TypographyText } from "../../assets/themes/base/styled";
+import { pxToRem } from "../../assets/themes/functions/pxToRem";
+
 export const Login = (): ReactElement => {
-  const theme = createTheme();
   const {
     control,
     register,
@@ -24,21 +24,28 @@ export const Login = (): ReactElement => {
   function handleLogin(data: AuthSchema) {
     authenticateLogin("2");
   }
+
   return (
-    <Box
-      display={"flex"}
-      alignItems={"center"}
-      justifyContent="center"
-      flexDirection="column"
-      height="100vh"
-      width="100%"
-    >
-      <Box width="30%">
-        <h1 id="login-title">Login</h1>
-        <p id="login-paragrafh">Faça seu login para gerenciar os seus serivços</p>
-        <ComponentLogin />
+    <LayoutBase>
+      <Box
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent="center"
+        flexDirection="column"
+        height="100vh"
+        width="100%"
+      >
+        <Box   width="30%">
+          <TypographyText fontWeight={500} variant="h1" fontSize={pxToRem(39)}>
+            Faça seu login
+          </TypographyText>
+          <TypographyText mt={3} fontSize={22}>
+            Faça seu login para gerenciar os seus serivços
+          </TypographyText>
+          <ComponentLogin />
+        </Box>
       </Box>
-    </Box>
+    </LayoutBase>
   );
 };
 

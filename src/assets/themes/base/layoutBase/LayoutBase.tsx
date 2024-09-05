@@ -6,4 +6,5 @@ interface LayoutBaseProps {
 
 export const LayoutBase: React.FC<LayoutBaseProps> = ({ children }) => {
   return <Box>{children}</Box>;
+  
 };

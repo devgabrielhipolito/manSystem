@@ -1,45 +1,51 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
-import { themeSelector } from "../../redux/reducers/themeReducer";
-import { useDispatch } from "react-redux";
-import { teste } from "../../theme";
+import { Button, Typography } from "@mui/material";
+import { TextFieldInput, TypographyText } from "../../assets/themes/base/styled";
+import { ButtonCustom } from "../../assets/themes/base/styled/button/Button";
 
 export default function ComponentLogin() {
-  const dispatch = useDispatch();
-  function handle() {
-    dispatch(themeSelector(teste));
-  }
+  function handle() {}
 
   return (
     <Box
-      height="35vh"
+      height="45vh"
       display="flex"
-      padding="2%"
       width="100%"
       justifyContent="space-around"
       alignItems="center"
       flexDirection="column"
       component="form"
     >
-      <TextField
-        sx={{ width: "inherit" }}
+      <TextFieldInput
         id="input-email"
         type="text"
         label="Seu email"
         variant="outlined"
       />
-      <TextField
-        sx={{ width: "inherit" }}
+      <TextFieldInput
+        defaultValue={"text"}
         id="input-login"
         type="password"
         label="Sua senha"
         variant="outlined"
       />
-      <Button sx={{ width: 120 }} onClick={handle} variant="contained">
-        Login
-      </Button>
+      <ButtonCustom id="teste"  onClick={handle} variant="contained">
+        Sing In
+      </ButtonCustom>
+      <ButtonCustom  onClick={handle} variant="outlined">
+        Sing Up
+      </ButtonCustom>
+      <Typography
+        color="#4b4b4b"
+        fontSize={12}
+        component="a"
+        href="/"
+        variant="button"
+      >
+        {" "}
+        Esqueceu sua senha?
+      </Typography>
     </Box>
   );
 }
