@@ -1,16 +1,16 @@
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import { TextFieldInput } from "../../assets/themes/base/styled";
-import { ButtonCustom } from "../../assets/themes/base/styled/button/Button";
+import { TextFieldInput } from "../assets/themes/base/styled";
+import { ButtonCustom } from "../assets/themes/base/styled/button/Button";
 import { useNavigate } from "react-router-dom";
 
-export default function ComponentLogin() {
+export const ComponentRegister = () => {
   const navigate = useNavigate();
   function handle() {}
 
   return (
     <Box
-      height="45vh"
+      height="60vh"
       display="flex"
       maxWidth="100%"
       width="100%"
@@ -22,37 +22,42 @@ export default function ComponentLogin() {
       <TextFieldInput
         id="input-email"
         type="text"
-        label="Seu email"
+        label="Digite seu email"
         variant="outlined"
       />
+
       <TextFieldInput
-        id="input-login"
-        type="password"
-        label="Sua senha"
+        id="input-name"
+        type="text"
+        label="Digite seu nome"
         variant="outlined"
       />
+
+      <TextFieldInput
+        id="input-password"
+        type="password"
+        label="Digite sua senha"
+        variant="outlined"
+      />
+
+      <TextFieldInput
+        id="input-confirm-password"
+        type="password"
+        label="Confirme sua senha"
+        variant="outlined"
+      />
+
       <ButtonCustom onClick={handle} variant="contained">
-        Sing In
+        Sing Up
       </ButtonCustom>
       <ButtonCustom
         onClick={() => {
-          navigate("/register");
+          navigate("/");
         }}
         variant="outlined"
       >
-        Sing Up
+        Ja tem um login?
       </ButtonCustom>
-
-      <Typography
-        color="#4b4b4b"
-        fontSize={12}
-        component="a"
-        href="/"
-        variant="button"
-      >
-        {" "}
-        Esqueceu sua senha?
-      </Typography>
     </Box>
   );
-}
+};

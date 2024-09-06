@@ -9,9 +9,9 @@ import ComponentLogin from "../../components/Login";
 import { LayoutBase } from "../../assets/themes/base/layoutBase/LayoutBase";
 import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
-import { BoxCenter } from "../../components";
+import { BoxCenter, ComponentRegister } from "../../components";
 
-export const Login = (): ReactElement => {
+export const Register = (): ReactElement => {
   const {
     control,
     register,
@@ -34,14 +34,12 @@ export const Login = (): ReactElement => {
         variant="h1"
         fontSize={pxToRem(39)}
       >
-        Faça seu login
+        Crie sua conta
       </TypographyText>
       <TypographyText mr={"auto"} mt={3} fontSize={22}>
         Faça seu login para gerenciar os seus serivços
       </TypographyText>
-      <ComponentLogin />
+      <ComponentRegister />
     </BoxCenter>
   );
 };
-
-export default Login;

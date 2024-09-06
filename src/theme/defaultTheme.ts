@@ -8,15 +8,23 @@ export const Light = createTheme({
       dark: blueGrey[500],
       contrastText: "#ffffff",
     },
-
     background: {
       default: "#f7f6f3",
       paper: "#ffffff",
     },
   },
-
   typography: {
     fontFamily: "Open sans",
     fontWeightRegular: "lighter",
+  },
+
+  components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+        },
+      },
+    },
   },
 });
