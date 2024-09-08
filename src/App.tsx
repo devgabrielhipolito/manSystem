@@ -1,16 +1,16 @@
-import { Provider } from "react-redux";
 import { LayoutBase } from "./assets/themes/base/layoutBase/LayoutBase";
-import store from "./redux/store/store";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthProvider";
 
 function App() {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
-    <Provider store={store}>
-      <LayoutBase>
-        <RouterProvider router={router} />
-      </LayoutBase>
-    </Provider>
+    <LayoutBase>
+      <RouterProvider router={router} />
+    </LayoutBase>
   );
 }
 
