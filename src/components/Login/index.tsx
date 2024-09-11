@@ -1,12 +1,41 @@
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
+import { FormControl, Typography } from "@mui/material";
 import { TextFieldInput } from "../../assets/themes/base/styled";
 import { ButtonCustom } from "../../assets/themes/base/styled/button/Button";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
-export default function ComponentLogin() {
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
+
+interface ComponentLoginProps {
+  onSubmit: () => void;
+  control: Control<{
+    email: string;
+    password: string;
+  }>;
+  register: UseFormRegister<{
+    email: string;
+    password: string;
+  }>;
+
+  error: FieldErrors<{
+    email: string;
+    password: string;
+  }>;
+}
+
+export const ComponentLogin: React.FC<ComponentLoginProps> = ({
+  error,
+  control,
+  onSubmit,
+  register,
+}) => {
   const navigate = useNavigate();
-  function handle() {}
 
   return (
     <Box
@@ -19,19 +48,34 @@ export default function ComponentLogin() {
       flexDirection="column"
       component="form"
     >
-      <TextFieldInput
-        id="input-email"
-        type="text"
-        label="Seu email"
-        variant="outlined"
-      />
-      <TextFieldInput
-        id="input-login"
-        type="password"
-        label="Sua senha"
-        variant="outlined"
-      />
-      <ButtonCustom onClick={handle} variant="contained">
+      <Controller
+        name="email"
+        control={control}
+        render={({ field }) => (
+          <TextFieldInput
+            {...register("email")}
+            {...field}
+            variant="outlined"
+            error={!!error.email}
+            label={error.email ? error.email?.message : "Seu email"}
+          />
+        )}
+      ></Controller>
+      <Controller
+        name="password"
+        control={control}
+        render={({ field }) => (
+          <TextFieldInput
+            {...register("password")}
+            type="password"
+            variant="outlined"
+            error={!!error.password}
+            {...field}
+            label={error.password ? error.password?.message : "Sua senha"}
+          />
+        )}
+      ></Controller>
+      <ButtonCustom variant="contained" onClick={onSubmit}>
         Sing In
       </ButtonCustom>
       <ButtonCustom
@@ -55,4 +99,4 @@ export default function ComponentLogin() {
       </Typography>
     </Box>
   );
-}
+};

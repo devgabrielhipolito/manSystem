@@ -1,3 +1,4 @@
-import { createAction } from "@reduxjs/toolkit";
-
-export const authenticateLogin = createAction<string>("authenticate/login");
+export default {
+  AUTHENTICATION_REQUEST: "authentication/AUTHENTICATION_REQUEST",
+  AUTHENTICATION_SUCCESS: "authentication/AUTHENTICATION_SUCCESS",
+} as const;

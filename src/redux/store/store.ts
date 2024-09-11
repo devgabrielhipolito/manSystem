@@ -2,8 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "../reducers";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "../sagas/rootSaga";
+import userApi from "../rtk_query/apiQuery";
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware];
+const middleware = [sagaMiddleware, userApi.middleware];
 
 const store = configureStore({
   reducer: rootReducer,

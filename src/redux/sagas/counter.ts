@@ -4,11 +4,11 @@ import { AUTHENTICATION_REQUEST } from "../reducers/autheticationReducer";
 import userApi from "../rtk_query/apiQuery"; //rtk query
 import { authenticationRequest } from "../actions";
 import { authenticationRequestPayload, objectUser } from "../../types/auth";
+import { increment } from "../reducers/counterSlices";
 
-export function* AUTHENTICATION_REQUEST_SAGA(
-  data: authenticationRequestPayload
-) {
+export function* CounterS(data: number): SagaIterator {
   try {
-    put(AUTHENTICATION_REQUEST(data));
+    console.log(data);
+    put(increment(data));
   } catch (error) {}
 }

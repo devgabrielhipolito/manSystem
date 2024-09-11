@@ -3,10 +3,40 @@ import { Typography } from "@mui/material";
 import { TextFieldInput } from "../assets/themes/base/styled";
 import { ButtonCustom } from "../assets/themes/base/styled/button/Button";
 import { useNavigate } from "react-router-dom";
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
 
-export const ComponentRegister = () => {
+interface ComponentLoginProps {
+  onSubmit: () => void;
+  control: Control<{
+    name: string;
+    email: string;
+    password: string;
+  }>;
+  register: UseFormRegister<{
+    name: string;
+    email: string;
+    password: string;
+  }>;
+
+  error: FieldErrors<{
+    name: string;
+    email: string;
+    password: string;
+  }>;
+}
+
+export const ComponentRegister: React.FC<ComponentLoginProps> = ({
+  control,
+  error,
+  onSubmit,
+  register,
+}) => {
   const navigate = useNavigate();
-  function handle() {}
 
   return (
     <Box
@@ -19,35 +49,66 @@ export const ComponentRegister = () => {
       flexDirection="column"
       component="form"
     >
-      <TextFieldInput
-        id="input-email"
-        type="text"
-        label="Digite seu email"
-        variant="outlined"
-      />
+      <Controller
+        name="name"
+        control={control}
+        render={({ field }) => (
+          <TextFieldInput
+            {...register("name")}
+            {...field}
+            variant="outlined"
+            error={!!error.name}
+            label={error.name ? error.name?.message : "Seu nome"}
+          />
+        )}
+      ></Controller>
 
-      <TextFieldInput
-        id="input-name"
-        type="text"
-        label="Digite seu nome"
-        variant="outlined"
-      />
+      <Controller
+        name="email"
+        control={control}
+        render={({ field }) => (
+          <TextFieldInput
+            {...register("email")}
+            {...field}
+            variant="outlined"
+            error={!!error.email}
+            label={error.email ? error.email?.message : "Seu email"}
+          />
+        )}
+      ></Controller>
 
-      <TextFieldInput
-        id="input-password"
-        type="password"
-        label="Digite sua senha"
-        variant="outlined"
-      />
+      <Controller
+        name="password"
+        control={control}
+        render={({ field }) => (
+          <TextFieldInput
+            {...register("password")}
+            type="password"
+            variant="outlined"
+            error={!!error.password}
+            {...field}
+            label={error.password ? error.password?.message : "Sua senha"}
+          />
+        )}
+      ></Controller>
 
-      <TextFieldInput
-        id="input-confirm-password"
-        type="password"
-        label="Confirme sua senha"
-        variant="outlined"
-      />
-
-      <ButtonCustom onClick={handle} variant="contained">
+      <Controller
+        name="password"
+        control={control}
+        render={({ field }) => (
+          <TextFieldInput
+            {...register("password")}
+            type="password"
+            variant="outlined"
+            error={!!error.password}
+            {...field}
+            label={
+              error.password ? error.password?.message : "Confirme sua senha"
+            }
+          />
+        )}
+      ></Controller>
+      <ButtonCustom variant="contained" onClick={onSubmit}>
         Sing Up
       </ButtonCustom>
       <ButtonCustom
@@ -56,7 +117,7 @@ export const ComponentRegister = () => {
         }}
         variant="outlined"
       >
-        Ja tem um login?
+        Sing In
       </ButtonCustom>
     </Box>
   );

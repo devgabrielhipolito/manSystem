@@ -1,18 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { authenticationRequestPayload, objectUser } from "../../types/auth";
 
 const initialState = {
   data: "",
 };
 
-const authenticateReducer = createSlice({
-  name: "authenticate",
+const authenticationReducer = createSlice({
+  name: "authentication",
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<string>) => {
-      state.data = action.payload;
+    AUTHENTICATION_REQUEST: (
+      state,
+      action: PayloadAction<authenticationRequestPayload>
+    ) => {
+      console.log("REDUCER");
+      action.payload;
+    },
+    AUTHENTICATION_SUCCESS: (state, action: PayloadAction<string>) => {
+      state.data = action.payload; // Você pode definir outra lógica aqui para o sucesso
     },
   },
 });
 
-export const { login } = authenticateReducer.actions;
-export default authenticateReducer.reducer;
+// Exporta as actions geradas pelo createSlice
+export const { AUTHENTICATION_REQUEST, AUTHENTICATION_SUCCESS } =
+  authenticationReducer.actions;
+export default authenticationReducer.reducer;

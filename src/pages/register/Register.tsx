@@ -2,14 +2,12 @@ import { ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import { authenticateLogin } from "../../redux/actions/authenticationAction";
+import { authenticationRequest } from "../../redux/actions/";
 import { authSchema, AuthSchema } from "../../schemas/auth";
-import { Box } from "@mui/material";
-import ComponentLogin from "../../components/Login";
-import { LayoutBase } from "../../assets/themes/base/layoutBase/LayoutBase";
 import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
 import { BoxCenter, ComponentRegister } from "../../components";
+import { SingUpSchema, singUpSchema } from "../../schemas/SingUp";
 
 export const Register = (): ReactElement => {
   const {
@@ -17,14 +15,15 @@ export const Register = (): ReactElement => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AuthSchema>({
-    resolver: yupResolver(authSchema),
+  } = useForm<SingUpSchema>({
+    resolver: yupResolver(singUpSchema),
   });
 
   const dispatch = useDispatch();
-  function handleLogin(data: AuthSchema) {
-    authenticateLogin("2");
-  }
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+    dispatch(authenticationRequest("12"));
+  });
 
   return (
     <BoxCenter>
@@ -39,7 +38,12 @@ export const Register = (): ReactElement => {
       <TypographyText mr={"auto"} mt={3} fontSize={22}>
         Faça seu login para gerenciar os seus serivços
       </TypographyText>
-      <ComponentRegister />
+      <ComponentRegister
+        error={errors}
+        control={control}
+        register={register}
+        onSubmit={onSubmit}
+      />
     </BoxCenter>
   );
 };
