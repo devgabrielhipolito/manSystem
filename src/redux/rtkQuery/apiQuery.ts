@@ -1,16 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { objectUser } from "../../types/auth";
 
 const userApi = createApi({
   reducerPath: "userApis",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
   endpoints: (builder) => ({
-    getUsers: builder.query<any, void>({
-      query: () => "/users",
-    }),
     getUsersById: builder.query({
       query: (id) => `/users/${id}`,
     }),
-    singUpApi: builder.mutation({
+    authenticationUser: builder.mutation<void, objectUser>({
       query: (user) => ({
         url: "/users",
         body: user,
@@ -32,6 +30,6 @@ const userApi = createApi({
   }),
 });
 
-export const { useGetUsersQuery,useSingUpApiMutation } = userApi;
+export const { useAuthenticationUserMutation } = userApi;
 
 export default userApi;

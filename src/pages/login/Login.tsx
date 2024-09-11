@@ -1,15 +1,18 @@
 import { ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authSchema, AuthSchema } from "../../schemas/auth";
 import { ComponentLogin } from "../../components/Login";
 import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
 import { BoxCenter } from "../../components";
 import { authenticationRequest } from "../../redux/actions/";
-import userApi, { useGetUsersQuery } from "../../redux/rtk_query/apiQuery";
+import userApi, {
+  useAuthenticationUserMutation,
+} from "../../redux/rtkQuery/apiQuery";
 import { objectUser } from "../../types/auth";
+import { RootState } from "../../redux/reducers";
 
 export const Login = (): ReactElement => {
   const {
@@ -20,11 +23,15 @@ export const Login = (): ReactElement => {
   } = useForm<AuthSchema>({
     resolver: yupResolver(authSchema),
   });
-  const dispatch = useDispatch();
+
+  const [authenticationUser, { isSuccess, isLoading, isError }] =
+    useAuthenticationUserMutation();
+
   const onSubmit = handleSubmit((data: objectUser) => {
-    console.log(data);
-    dispatch(authenticationRequest(data));
+    const response = authenticationUser(data);
+    console.log(response);
   });
+
   return (
     <BoxCenter>
       <TypographyText
@@ -44,6 +51,8 @@ export const Login = (): ReactElement => {
         register={register}
         onSubmit={onSubmit}
       />
+
+      {isLoading && <p>Carregando</p>}
     </BoxCenter>
   );
 };

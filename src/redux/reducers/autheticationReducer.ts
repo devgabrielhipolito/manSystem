@@ -1,8 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { authenticationRequestPayload, objectUser } from "../../types/auth";
+import { act } from "react";
 
 const initialState = {
-  data: "",
+  user: [],
+  loading: false,
+  isError: null,
 };
 
 const authenticationReducer = createSlice({
@@ -11,13 +14,15 @@ const authenticationReducer = createSlice({
   reducers: {
     AUTHENTICATION_REQUEST: (
       state,
-      action: PayloadAction<authenticationRequestPayload>
+      {
+        payload: data,
+      }: PayloadAction<Pick<authenticationRequestPayload, "payload">>
     ) => {
-      console.log("REDUCER");
-      action.payload;
+      console.log(data);
     },
-    AUTHENTICATION_SUCCESS: (state, action: PayloadAction<string>) => {
-      state.data = action.payload; // Você pode definir outra lógica aqui para o sucesso
+    AUTHENTICATION_SUCCESS: (state, action: PayloadAction<boolean>) => {
+      state.loading = !action.payload;
+      return { ...state };
     },
   },
 });

@@ -6,3 +6,7 @@ import { objectUser } from "../../types/auth";
 export const authenticationRequest = createAction<objectUser>(
   authenticationAction.AUTHENTICATION_REQUEST
 );
+
+export const authenticationSucess = createAction<boolean>(
+  authenticationAction.AUTHENTICATION_SUCCESS
+);
