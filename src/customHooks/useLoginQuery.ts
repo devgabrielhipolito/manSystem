@@ -13,7 +13,7 @@ export default function useLoginQuery() {
       const response = await authenticationUser(data);
 
       if (!response.data) {
-        dispatch(AUTHENTICATION_REQUEST(response.data));
+        dispatch(authenticationRequest(response.data));
       }
     } catch (error) {
       console.log(error);
