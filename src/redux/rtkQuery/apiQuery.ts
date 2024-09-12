@@ -3,12 +3,14 @@ import { objectUser } from "../../types/auth";
 
 const userApi = createApi({
   reducerPath: "userApis",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://dummy.restapiexample.com/api/v1/create",
+  }),
   endpoints: (builder) => ({
     getUsersById: builder.query({
       query: (id) => `/users/${id}`,
     }),
-    authenticationUser: builder.mutation<void, objectUser>({
+    authenticationUser: builder.mutation<any, objectUser>({
       query: (user) => ({
         url: "/users",
         body: user,

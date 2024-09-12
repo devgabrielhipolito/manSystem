@@ -2,10 +2,16 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { authenticationRequestPayload, objectUser } from "../../types/auth";
 import { act } from "react";
 
-const initialState = {
-  user: [],
-  loading: false,
-  isError: null,
+type AuthState = {
+  user: string | null;
+  token: string | null;
+  isAuthenticated: boolean;
+};
+
+const initialState: AuthState = {
+  user: null,
+  token: null,
+  isAuthenticated: false,
 };
 
 const authenticationReducer = createSlice({
@@ -13,16 +19,17 @@ const authenticationReducer = createSlice({
   initialState,
   reducers: {
     AUTHENTICATION_REQUEST: (
-      state,
+      state: AuthState,
       {
         payload: data,
       }: PayloadAction<Pick<authenticationRequestPayload, "payload">>
     ) => {
       console.log(data);
     },
-    AUTHENTICATION_SUCCESS: (state, action: PayloadAction<boolean>) => {
-      state.loading = !action.payload;
-      return { ...state };
+    AUTHENTICATION_SUCCESS: (
+      state: AuthState,
+      action: PayloadAction<boolean>
+    ) => {
     },
   },
 });

@@ -13,6 +13,7 @@ import userApi, {
 } from "../../redux/rtkQuery/apiQuery";
 import { objectUser } from "../../types/auth";
 import { RootState } from "../../redux/reducers";
+import { Await } from "react-router-dom";
 
 export const Login = (): ReactElement => {
   const {
@@ -28,7 +29,7 @@ export const Login = (): ReactElement => {
     useAuthenticationUserMutation();
 
   const onSubmit = handleSubmit((data: objectUser) => {
-    const response = authenticationUser(data);
+    const response = authenticationUser( data);
     console.log(response);
   });
 
@@ -52,7 +53,7 @@ export const Login = (): ReactElement => {
         onSubmit={onSubmit}
       />
 
-      {isLoading && <p>Carregando</p>}
+      {isError && <p>Houve algum erro, contate o administrador</p>}
     </BoxCenter>
   );
 };
