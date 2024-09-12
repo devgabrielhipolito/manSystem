@@ -4,7 +4,7 @@ import { objectUser } from "../../types/auth";
 const userApi = createApi({
   reducerPath: "userApis",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dummy.restapiexample.com/api/v1/create",
+    baseUrl: "https://localiza-omie-api.onrender.com/api",
   }),
   endpoints: (builder) => ({
     getUsersById: builder.query({
@@ -12,8 +12,8 @@ const userApi = createApi({
     }),
     authenticationUser: builder.mutation<any, objectUser>({
       query: (user) => ({
-        url: "/users",
-        body: user,
+        url: "/login",
+        body: { ...user, provider: "user" },
         method: "POST",
       }),
     }),

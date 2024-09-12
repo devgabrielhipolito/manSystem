@@ -4,6 +4,4 @@ import { authenticationRequestPayload } from "../../types/auth";
 
 export function* AUTHENTICATION_REQUEST_SAGA(
   data: authenticationRequestPayload
-) {
-  put(AUTHENTICATION_REQUEST(data));
-}
+) {}
