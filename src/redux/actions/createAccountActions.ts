@@ -1,0 +1,4 @@
+export default {
+  CREATE_ACCOUNT_REQUEST: "createAccount/CREATE_ACCOUNT_REQUEST",
+  CREATE_ACCOUNT_SUCCESS: "createAccount/ACREATE_ACCOUNT_SUCCESS",
+} as const;

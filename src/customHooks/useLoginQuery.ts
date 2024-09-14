@@ -8,7 +8,20 @@ import { useDispatch } from "react-redux";
 export default function useLoginQuery() {
   const [authenticationUser, { isLoading }] = useAuthenticationUserMutation();
   const dispatch = useDispatch();
-  const fetch = async (data: objectUser) => {
+
+  const fetchLogin = async (data: objectUser) => {
+    try {
+      const response = await authenticationUser(data);
+
+      if (!response.data) {
+        dispatch(authenticationRequest(response.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchRegister = async (data: objectUser) => {
     try {
       const response = await authenticationUser(data);
 
@@ -21,7 +34,7 @@ export default function useLoginQuery() {
   };
 
   return {
-    fetch,
+    fetchLogin,
     isLoading,
   };
 }

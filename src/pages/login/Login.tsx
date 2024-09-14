@@ -6,13 +6,10 @@ import { ComponentLogin } from "../../components/Login";
 import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
 import { BoxCenter } from "../../components";
-
 import { objectUser } from "../../types/auth";
 import useLoginQuery from "../../customHooks/useLoginQuery";
-import { AUTHENTICATION_REQUEST } from "../../redux/reducers/autheticationReducer";
-import { authenticationRequest } from "../../redux/actions";
 
-export const Login = (): ReactElement => {
+export const Login = ({}): ReactElement => {
   const {
     control,
     register,
@@ -22,10 +19,21 @@ export const Login = (): ReactElement => {
     resolver: yupResolver(authSchema),
   });
 
-  const { fetch, isLoading } = useLoginQuery();
+  const subscribe = [
+    {
+      login: () => {
+        console.log(2);
+      },
+      registro: "funcao2",
+    },
+  ];
+
+  const { fetchLogin, isLoading } = useLoginQuery();
+
+  subscribe.map((data) => console.log(data["login"]()));
 
   const onSubmit = handleSubmit((data: objectUser) => {
-    fetch(data);
+    fetchLogin(data);
   });
 
   return (
