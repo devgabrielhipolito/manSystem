@@ -5,14 +5,19 @@ import { Register } from "../pages/register/Register";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers";
 
-
-
-
-
 export const privateRoutes: RouteObject[] = [
   {
     element: <Dashboard />,
     path: "/",
+  },
+
+  {
+    element: (
+      <>
+        <p>Rota não encontrada</p>
+      </>
+    ),
+    path: "*",
   },
 ];
 

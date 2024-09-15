@@ -10,7 +10,7 @@ type AuthState = {
 const initialState: AuthState = {
   user: null,
   token: null,
-  isAuthenticated: true,
+  isAuthenticated: false,
 };
 
 const authenticationReducer = createSlice({

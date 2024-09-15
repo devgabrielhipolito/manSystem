@@ -7,7 +7,7 @@ import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
 import { BoxCenter } from "../../components";
 import { objectUser } from "../../types/auth";
-import useLoginQuery from "../../customHooks/useLoginQuery";
+import useLoginQuery from "../../customHooks/useApiQuery";
 
 export const Login = ({}): ReactElement => {
   const {
