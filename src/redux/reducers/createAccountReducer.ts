@@ -11,7 +11,7 @@ const initialState: CreateState = {
   isCreatedAccount: false,
 };
 
-const authenticationReducer = createSlice({
+const createAccountReducer = createSlice({
   name: "createAccount",
   initialState,
   reducers: {
@@ -26,12 +26,12 @@ const authenticationReducer = createSlice({
       action: PayloadAction<boolean>
     ) => ({
       ...state,
-      is: true,
+      isCreatedAccount: true,
     }),
   },
 });
 
 // Exporta as actions geradas pelo createSlice
 export const { CREATE_ACCOUNT_REQUEST, CREATE_ACCOUNT_SUCCESS } =
-  authenticationReducer.actions;
-export default authenticationReducer.reducer;
+  createAccountReducer.actions;
+export default createAccountReducer.reducer;

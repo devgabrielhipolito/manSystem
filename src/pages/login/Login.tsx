@@ -32,7 +32,7 @@ export const Login = ({}): ReactElement => {
 
   subscribe.map((data) => console.log(data["login"]()));
 
-  const onSubmit = handleSubmit((data: objectUser) => {
+  const onSubmit = handleSubmit((data) => {
     fetchLogin(data);
   });
 

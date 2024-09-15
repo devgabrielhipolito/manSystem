@@ -2,7 +2,10 @@ import { ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import { authenticationRequest } from "../../redux/actions/";
+import {
+  authenticationRequest,
+  createAccountRequest,
+} from "../../redux/actions/";
 import { authSchema, AuthSchema } from "../../schemas/auth";
 import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
@@ -22,7 +25,7 @@ export const Register = (): ReactElement => {
   const dispatch = useDispatch();
   const onSubmit = handleSubmit((data) => {
     console.log(data);
-    dispatch(authenticationRequest("12"));
+    dispatch(createAccountRequest(data));
   });
 
   return (
