@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import { isAuthenticad, privateRoutes, publicRoutes } from "./routes";
+import { privateRoutes, publicRoutes } from "./routes";
 import { RouteObject } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/reducers";
+
+
 
 export function returnRoutes(): RouteObject[] {
-  if (isAuthenticad) {
+  if (true) {
     return privateRoutes;
   }
   return publicRoutes;
