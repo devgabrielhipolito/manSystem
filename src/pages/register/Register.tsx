@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import {
   authenticationRequest,
-  createAccountRequest,
+  createAccountUserRequest,
 } from "../../redux/actions/";
 import { authSchema, AuthSchema } from "../../schemas/auth";
 import { TypographyText } from "../../assets/themes/base/styled";
@@ -25,7 +25,7 @@ export const Register = (): ReactElement => {
   const dispatch = useDispatch();
   const onSubmit = handleSubmit((data) => {
     console.log(data);
-    dispatch(createAccountRequest(data));
+    dispatch(createAccountUserRequest(data));
   });
 
   return (

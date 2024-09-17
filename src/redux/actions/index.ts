@@ -12,9 +12,9 @@ export const authenticationSucess = createAction<boolean>(
 );
 
 //create account
-export const createAccountRequest = createAction<objectUser>(
+export const createAccountUserRequest = createAction<objectUser>(
   createAccountActions.CREATE_ACCOUNT_REQUEST
 );
-export const createAccountSucess = createAction<boolean>(
+export const createAccountUserSucess = createAction<boolean>(
   createAccountActions.CREATE_ACCOUNT_SUCCESS
 );

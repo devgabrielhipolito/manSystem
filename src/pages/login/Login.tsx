@@ -19,21 +19,10 @@ export const Login = ({}): ReactElement => {
     resolver: yupResolver(authSchema),
   });
 
-  const subscribe = [
-    {
-      login: () => {
-        console.log(2);
-      },
-      registro: "funcao2",
-    },
-  ];
-
-  const { fetchLogin, isLoading } = useLoginQuery();
-
-  subscribe.map((data) => console.log(data["login"]()));
+  const { dispatch, isLoading } = useLoginQuery();
 
   const onSubmit = handleSubmit((data) => {
-    fetchLogin(data);
+    dispatch({ data, action: "authentication" });
   });
 
   return (

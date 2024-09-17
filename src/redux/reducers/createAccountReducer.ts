@@ -11,8 +11,8 @@ const initialState: CreateState = {
   isCreatedAccount: false,
 };
 
-const createAccountReducer = createSlice({
-  name: "createAccount",
+const createAccountUserReducer = createSlice({
+  name: "createAccountUser",
   initialState,
   reducers: {
     CREATE_ACCOUNT_REQUEST: (
@@ -33,5 +33,5 @@ const createAccountReducer = createSlice({
 
 // Exporta as actions geradas pelo createSlice
 export const { CREATE_ACCOUNT_REQUEST, CREATE_ACCOUNT_SUCCESS } =
-  createAccountReducer.actions;
-export default createAccountReducer.reducer;
+  createAccountUserReducer.actions;
+export default createAccountUserReducer.reducer;
