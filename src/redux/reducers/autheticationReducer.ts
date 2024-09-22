@@ -2,15 +2,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { authenticationRequestPayload, objectUser } from "../../types/auth";
 
 type AuthState = {
-  user: string | null;
   token: string | null;
   isAuthenticated: boolean;
 };
 
 const initialState: AuthState = {
-  user: null,
   token: null,
   isAuthenticated: false,
+};
+
+type ResponseAuthType = {
+  status: string;
+  token: string;
 };
 
 const authenticationReducer = createSlice({
@@ -19,13 +22,14 @@ const authenticationReducer = createSlice({
   reducers: {
     AUTHENTICATION_REQUEST: (
       state: AuthState,
-      { payload: data }: PayloadAction<objectUser>
-    ) => {
-      console.log(data);
-    },
+      { payload: data }: PayloadAction<ResponseAuthType>
+    ) => ({
+      ...state,
+      token: data.token,
+    }),
     AUTHENTICATION_SUCCESS: (
       state: AuthState,
-      action: PayloadAction<boolean>
+      { payload: data }: PayloadAction<boolean>
     ) => ({
       ...state,
       isAuthenticated: true,

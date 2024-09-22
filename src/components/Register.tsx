@@ -16,17 +16,20 @@ interface ComponentLoginProps {
     name: string;
     email: string;
     password: string;
+    confirmpassword: string;
   }>;
   register: UseFormRegister<{
     name: string;
     email: string;
     password: string;
+    confirmpassword: string;
   }>;
 
   error: FieldErrors<{
     name: string;
     email: string;
     password: string;
+    confirmpassword: string;
   }>;
 }
 
@@ -93,11 +96,11 @@ export const ComponentRegister: React.FC<ComponentLoginProps> = ({
       ></Controller>
 
       <Controller
-        name="password"
+        name="confirmpassword"
         control={control}
         render={({ field }) => (
           <TextFieldInput
-            {...register("password")}
+            {...register("confirmpassword")}
             type="password"
             variant="outlined"
             error={!!error.password}

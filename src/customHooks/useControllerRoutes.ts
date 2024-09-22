@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RootState } from "../redux/reducers";
 import { useSelector } from "react-redux";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
@@ -14,6 +14,7 @@ export default function useControllerRoutes() {
     }
     return publicRoutes;
   }
+
   const router = createBrowserRouter(returnRoutes());
   return {
     router,

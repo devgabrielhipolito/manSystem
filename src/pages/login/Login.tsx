@@ -6,8 +6,7 @@ import { ComponentLogin } from "../../components/Login";
 import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
 import { BoxCenter } from "../../components";
-import { objectUser } from "../../types/auth";
-import useLoginQuery from "../../customHooks/useApiQuery";
+import useApiQuery from "../../customHooks/useApiQuery";
 
 export const Login = ({}): ReactElement => {
   const {
@@ -19,10 +18,9 @@ export const Login = ({}): ReactElement => {
     resolver: yupResolver(authSchema),
   });
 
-  const { dispatch, isLoading } = useLoginQuery();
-
+  const { dispatchAction, isLoading, message } = useApiQuery();
   const onSubmit = handleSubmit((data) => {
-    dispatch({ data, action: "authentication" });
+    dispatchAction({ data, action: "authentication" });
   });
 
   return (
@@ -44,7 +42,7 @@ export const Login = ({}): ReactElement => {
         register={register}
         onSubmit={onSubmit}
       />
-      {isLoading && <p>Carregando</p>}
+      {message && <p>{message}</p>}
     </BoxCenter>
   );
 };

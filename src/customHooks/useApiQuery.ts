@@ -4,13 +4,17 @@ import {
 } from "../redux/rtkQuery/apiQuery";
 import {
   authenticationRequest,
+  authenticationSucess,
   createAccountUserRequest,
 } from "../redux/actions";
-import { AUTHENTICATION_REQUEST } from "../redux/reducers/autheticationReducer";
-import { useDispatch } from "react-redux";
-import { DispatchTypes, FetchMapTypes } from "../types";
 
-export default function useLoginQuery() {
+import { DispatchTypes, FetchMapTypes } from "../types";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+export default function useApiQuery() {
+  const [message, setMessage] = useState<string | null>(null);
+  const dispatch = useDispatch();
   const [authenticationUser, { isLoading: isAuthLoading }] =
     useAuthenticationUserMutation();
   const [createAccountUser, { isLoading: isRegisterLoading }] =
@@ -27,7 +31,7 @@ export default function useLoginQuery() {
     },
   };
 
-  const dispatch = ({ action, data }: DispatchTypes) => {
+  const dispatchAction = ({ action, data }: DispatchTypes) => {
     if (!fecthMaps[action]) {
       throw Error(`O action ${action} não é válido`);
     }
@@ -35,12 +39,19 @@ export default function useLoginQuery() {
   };
 
   const fetchQuery = ({ action, data }: DispatchTypes) => {
-    console.log(data, action);
     const api = fecthMaps[action].api(data);
-    api.then((response) => fecthMaps[action].reducer(response));
+    api.then(({ data, error }) => {
+      if (error) {
+        return setMessage(error.data.error);
+      }
+      setMessage(null);
+      dispatch(fecthMaps[action].reducer(data));
+    });
   };
+
   return {
-    dispatch,
+    dispatchAction,
+    message,
     isLoading: isAuthLoading || isRegisterLoading,
   };
 }

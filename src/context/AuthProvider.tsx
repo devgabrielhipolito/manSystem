@@ -1,42 +1,26 @@
-import React, { Children, createContext, useState } from "react";
+import { createContext, ReactElement, ReactNode, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/reducers";
+import { authenticationSucess } from "../redux/actions";
+import { replace, useNavigate } from "react-router-dom";
 
-export type UserProps = {
-  name: string;
-  token: string;
-};
+const AuthContext = createContext({});
 
-type AuthContextProps = {
-  user: UserProps | null;
-  login: (user: UserProps) => void;
-  logout: () => void;
-};
-
-const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
-
-interface AuthProviderProps {
-  children: React.ReactNode;
+interface iContext {
+  children: ReactNode;
 }
 
-const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<UserProps | null>({
-    name: "teste",
-    token: "2",
-  });
-
-  const login = (user: UserProps) => {
-    console.log(user);
-    setUser(user);
-  };
-
-  const logout = () => {
-    console.log("Logout");
-  };
-
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+const AuthProvider: React.FC<iContext> = ({ children }) => {
+  const dispatch = useDispatch();
+  const token = useSelector(
+    (state: RootState) => state.autheticationReducer.token
   );
+  if (token) {
+    dispatch(authenticationSucess(true));
+  }
+
+  console.log(token);
+  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
 };
 
-export { AuthProvider, AuthContext };
+export { AuthContext, AuthProvider };

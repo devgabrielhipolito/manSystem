@@ -1,23 +1,19 @@
-import { RouteObject } from "react-router-dom";
+import { Navigate, RouteObject } from "react-router-dom";
 import { Login } from "../pages/login/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
 import { Register } from "../pages/register/Register";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/reducers";
 
 export const privateRoutes: RouteObject[] = [
   {
     element: <Dashboard />,
     path: "/",
-  },
 
-  {
-    element: (
-      <>
-        <p>Rota não encontrada</p>
-      </>
-    ),
-    path: "*",
+    // children: [
+    //   {
+    //     path: "teste",
+    //     element: <p>Logado</p>,
+    //   },
+    // ],
   },
 ];
 

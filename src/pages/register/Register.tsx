@@ -1,16 +1,11 @@
 import { ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useDispatch } from "react-redux";
-import {
-  authenticationRequest,
-  createAccountUserRequest,
-} from "../../redux/actions/";
-import { authSchema, AuthSchema } from "../../schemas/auth";
 import { TypographyText } from "../../assets/themes/base/styled";
 import { pxToRem } from "../../assets/themes/functions/pxToRem";
 import { BoxCenter, ComponentRegister } from "../../components";
 import { SingUpSchema, singUpSchema } from "../../schemas/SingUp";
+import useApiQuery from "../../customHooks/useApiQuery";
 
 export const Register = (): ReactElement => {
   const {
@@ -22,10 +17,10 @@ export const Register = (): ReactElement => {
     resolver: yupResolver(singUpSchema),
   });
 
-  const dispatch = useDispatch();
+  const { dispatchAction } = useApiQuery();
+
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    dispatch(createAccountUserRequest(data));
+    dispatchAction({ data, action: "createAccount" });
   });
 
   return (

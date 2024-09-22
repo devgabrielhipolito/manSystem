@@ -5,6 +5,7 @@ export const singUpSchema = yup
     name: yup.string().required("O nome é obrigatório"),
     email: yup.string().email().required("O email é obrigatório"),
     password: yup.string().required("A senha é obrigatória"),
+    confirmpassword: yup.string().required("Confirme sua senha"),
   })
   .required();
 
