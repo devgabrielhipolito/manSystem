@@ -8,12 +8,12 @@ export const privateRoutes: RouteObject[] = [
     element: <Dashboard />,
     path: "/",
 
-    // children: [
-    //   {
-    //     path: "teste",
-    //     element: <p>Logado</p>,
-    //   },
-    // ],
+    children: [
+      {
+        path: "teste",
+        element: <p>Logado</p>,
+      },
+    ],
   },
 ];
 
