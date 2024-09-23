@@ -6,15 +6,18 @@ import { AppThemeProvider } from "./context/ThemeProvider";
 import "./assets/style.css";
 import App from "./App";
 import { AuthProvider } from "./context/AuthProvider";
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AppThemeProvider>
-      <Provider store={store}>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </Provider>
-    </AppThemeProvider>
+    <BrowserRouter>
+      <AppThemeProvider>
+        <Provider store={store}>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </Provider>
+      </AppThemeProvider>
+    </BrowserRouter>
   </StrictMode>
 );

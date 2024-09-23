@@ -27,3 +27,16 @@ export const publicRoutes: RouteObject[] = [
     path: "/register",
   },
 ];
+
+export const routes = [
+  {
+    element: <Login />,
+    path: "/",
+    type: "public",
+  },
+  {
+    element: <Dashboard />,
+    path: "/dashboard",
+    type: "private",
+  },
+];
