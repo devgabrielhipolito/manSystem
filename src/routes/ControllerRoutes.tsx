@@ -1,28 +1,20 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useContext } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { routes } from "./routes";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers";
+import { AuthContext } from "../context/AuthProvider";
 export default function ControllerRoutes() {
-  const isAuthenticad = useSelector(
-    (state: RootState) => state.autheticationReducer.isAuthenticated
-  );
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticad) {
-      navigate("/dashboard");
-    }
-  }, [isAuthenticad, navigate]);
+  const {isAuthenticadMemo  } = useContext(AuthContext);
 
   const getRoutes = useCallback(() => {
-    return routes.map(({ element, path, type }) => {
-      if (type === "private" && !isAuthenticad) {
+    return routes.map(({ element, path, type, key }) => {
+      if (type === "private" && !isAuthenticadMemo) {
         return null;
       }
-      return <Route element={element} path={path} />;
+      return <Route key={key} element={element} path={path} />;
     });
-  }, [isAuthenticad]);
+  }, [isAuthenticadMemo]);
 
   return (
     <div>

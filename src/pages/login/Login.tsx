@@ -23,6 +23,8 @@ export const Login = ({}): ReactElement => {
     dispatchAction({ data, action: "authentication" });
   });
 
+  
+
   return (
     <BoxCenter>
       <TypographyText

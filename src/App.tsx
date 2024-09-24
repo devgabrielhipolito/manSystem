@@ -4,8 +4,6 @@ import useControllerRoutes from "./customHooks/useControllerRoutes";
 import ControllerRoutes from "./routes/ControllerRoutes";
 
 function App() {
-  const { router } = useControllerRoutes();
-
   return (
     <LayoutBase>
       <ControllerRoutes />

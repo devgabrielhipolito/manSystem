@@ -33,10 +33,14 @@ export const routes = [
     element: <Login />,
     path: "/",
     type: "public",
+    key: "login",
+    collapse: false,
   },
   {
     element: <Dashboard />,
     path: "/dashboard",
     type: "private",
+    key: "dashboard",
+    collapse: true,
   },
 ];
