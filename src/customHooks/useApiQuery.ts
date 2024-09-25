@@ -24,6 +24,7 @@ export default function useApiQuery() {
     authentication: {
       api: authenticationUser,
       reducer: authenticationRequest,
+      reducerSucess: authenticationSucess,
     },
     createAccount: {
       api: createAccountUser,
@@ -46,6 +47,9 @@ export default function useApiQuery() {
       }
       setMessage(null);
       dispatch(fecthMaps[action].reducer(data));
+      if (fecthMaps[action].reducerSucess) {
+        dispatch(fecthMaps[action].reducerSucess(true));
+      }
     });
   };
 

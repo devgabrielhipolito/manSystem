@@ -34,10 +34,18 @@ const authenticationReducer = createSlice({
       ...state,
       isAuthenticated: true,
     }),
+
+    AUTHENTICATION_LOGOUT: (state: AuthState) => ({
+      ...state,
+      isAuthenticated: false,
+    }),
   },
 });
 
 // Exporta as actions geradas pelo createSlice
-export const { AUTHENTICATION_REQUEST, AUTHENTICATION_SUCCESS } =
-  authenticationReducer.actions;
+export const {
+  AUTHENTICATION_REQUEST,
+  AUTHENTICATION_SUCCESS,
+  AUTHENTICATION_LOGOUT,
+} = authenticationReducer.actions;
 export default authenticationReducer.reducer;

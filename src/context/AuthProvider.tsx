@@ -33,15 +33,17 @@ const AuthProvider: React.FC<iContext> = ({ children }) => {
     if (cache) {
       dispatch(authenticationSucess(true));
     }
+  }, []);
 
+  useEffect(() => {
     if (tokenMemo) {
       localStorage.setItem("token", tokenMemo);
     }
-  }, [tokenMemo, isAuthenticadMemo]);
 
-  if (isAuthenticad) {
-    navigate("/dashboard");
-  }
+    if (isAuthenticad) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticadMemo, tokenMemo]);
 
   return (
     <AuthContext.Provider value={{ isAuthenticadMemo }}>

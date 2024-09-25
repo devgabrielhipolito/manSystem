@@ -10,6 +10,9 @@ export const authenticationRequest = createAction<objectUser>(
 export const authenticationSucess = createAction<boolean>(
   authenticationAction.AUTHENTICATION_SUCCESS
 );
+export const authenticationLogout = createAction<boolean>(
+  authenticationAction.AUTHENTICATION_LOGOUT
+);
 
 //create account
 export const createAccountUserRequest = createAction<objectUser>(
