@@ -2,6 +2,8 @@ import { Navigate, RouteObject } from "react-router-dom";
 import { Login } from "../pages/login/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
 import { Register } from "../pages/register/Register";
+import { Children } from "react";
+import SideNav from "../components/sideNav/SideNav";
 
 export const privateRoutes: RouteObject[] = [
   {
@@ -36,11 +38,20 @@ export const routes = [
     key: "login",
     collapse: false,
   },
+
   {
-    element: <Dashboard />,
+    element: <SideNav />,
     path: "/dashboard",
     type: "private",
-    key: "dashboard",
+    key: "sidenav",
     collapse: true,
+  },
+
+  {
+    element: <p>Mais uma rota</p>,
+    path: "/profile",
+    type: "private",
+    key: "teste",
+    collapse: false,
   },
 ];

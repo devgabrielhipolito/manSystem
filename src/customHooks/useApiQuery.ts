@@ -48,6 +48,7 @@ export default function useApiQuery() {
       setMessage(null);
       dispatch(fecthMaps[action].reducer(data));
       if (fecthMaps[action].reducerSucess) {
+        console.log("opa");
         dispatch(fecthMaps[action].reducerSucess(true));
       }
     });
