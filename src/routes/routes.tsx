@@ -3,9 +3,11 @@ import { Login } from "../pages/login/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
 import { Register } from "../pages/register/Register";
 import { Children } from "react";
-import SideNav from "../components/sideNav/SideNav";
+import SideNav from "../components/Sidenav";
+import { TypesRoutes } from "./types";
+import { userProvider } from "../utils/Permissions";
 
-export const privateRoutes: RouteObject[] = [
+export const privateRoutesss: RouteObject[] = [
   {
     element: <Dashboard />,
     path: "/",
@@ -19,7 +21,7 @@ export const privateRoutes: RouteObject[] = [
   },
 ];
 
-export const publicRoutes: RouteObject[] = [
+export const publicRoutesss: RouteObject[] = [
   {
     element: <Login />,
     path: "/",
@@ -30,28 +32,52 @@ export const publicRoutes: RouteObject[] = [
   },
 ];
 
-export const routes = [
+export const publicRoutes: TypesRoutes[] = [
   {
     element: <Login />,
     path: "/",
-    type: "public",
     key: "login",
-    collapse: false,
+    permissions: [userProvider.NO_ROLE_REQUIRED],
   },
+];
 
+export const privateRoutes: TypesRoutes[] = [
   {
-    element: <SideNav />,
-    path: "/dashboard",
-    type: "private",
-    key: "sidenav",
-    collapse: true,
+    element: <Dashboard />,
+    path: "/",
+    permissions: [userProvider.NO_ROLE_REQUIRED],
   },
 
   {
     element: <p>Mais uma rota</p>,
-    path: "/profile",
-    type: "private",
-    key: "teste",
-    collapse: false,
+    path: "/clientes",
+    key: "clientes",
+    permissions: [userProvider.NO_ROLE_REQUIRED],
+  },
+
+  {
+    element: <p>Mais uma rota</p>,
+    path: "/fornecedores",
+    key: "fornecedores",
+    permissions: [userProvider.NO_ROLE_REQUIRED],
+  },
+
+  {
+    element: <p>Mais uma rota</p>,
+    path: "/estoque",
+    key: "Estoque",
+    permissions: [userProvider.NO_ROLE_REQUIRED],
+  },
+  {
+    element: <p>Mais uma rota</p>,
+    path: "/logs",
+    key: "logs",
+    permissions: [userProvider.NO_ROLE_REQUIRED],
+  },
+  {
+    element: <p>Mais uma rota</p>,
+    path: "/admin",
+    key: "admin",
+    permissions: [userProvider.NO_ROLE_REQUIRED],
   },
 ];

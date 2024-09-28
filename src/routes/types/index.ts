@@ -1,6 +1,9 @@
 import { ReactElement } from "react";
+import { userProvider } from "../../utils/Permissions";
 
 export type TypesRoutes = {
-  name: string;
-  components: ReactElement;
+  key?: string;
+  path: string;
+  element: ReactElement;
+  permissions: userProvider[];
 };

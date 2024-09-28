@@ -14,7 +14,17 @@ export default function useCache() {
     }
   };
 
-  const storageToken = () => {
+  const storageToken = useCallback(() => {
+    const storageTokens = localStorage.getItem("TOKEN");
+    if (storageTokens) {
+      console.log("s")
+      dispatch(authenticationSucess(true));
+      return true;
+    }
+  }, [navigate]);
+
+  storageToken()
+  const storageTokens = () => {
     const storageToken = localStorage.getItem("TOKEN");
     if (storageToken) {
       dispatch(authenticationSucess(true));

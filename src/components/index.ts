@@ -1,4 +1,4 @@
 export * from "./Register";
-export * from "./sideNav/SideNav";
+export * from "./Sidenav";
 //utils
 export * from "./utils/BoxCenter";

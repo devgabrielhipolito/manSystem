@@ -4,11 +4,13 @@ import { authenticationRequestPayload, objectUser } from "../../types/auth";
 type AuthState = {
   token: string | null;
   isAuthenticated: boolean;
+  userPermission: string;
 };
 
 const initialState: AuthState = {
   token: null,
   isAuthenticated: false,
+  userPermission: "no_role_required",
 };
 
 type ResponseAuthType = {
