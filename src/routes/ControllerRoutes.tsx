@@ -53,8 +53,8 @@ export default function ControllerRoutes() {
   }, [isAuthenticated]);
 
   return (
-    <Box display={"flex"} bgcolor={"#fff"} width={"100%"} height={"100vh"}>
-      <Sidenav routes={routes} />
+    <Box>
+      {isAuthenticated && <Sidenav routes={routes} />}
       <Routes>
         {getRoutes()}
         <Route path="*" element={<Navigate to="/" replace />} />

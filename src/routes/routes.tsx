@@ -37,7 +37,13 @@ export const publicRoutes: TypesRoutes[] = [
     element: <Login />,
     path: "/",
     key: "login",
-    permissions: [userProvider.NO_ROLE_REQUIRED],
+    permissions: [userProvider.NO_ROLE_REQUIRED, userProvider.boss],
+  },
+  {
+    element: <p>So um boss pode visualizar esta rota</p>,
+    path: "/boss",
+    key: "boss",
+    permissions: [userProvider.boss],
   },
 ];
 

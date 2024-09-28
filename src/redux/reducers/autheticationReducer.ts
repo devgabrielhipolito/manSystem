@@ -1,16 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { authenticationRequestPayload, objectUser } from "../../types/auth";
 
 type AuthState = {
   token: string | null;
   isAuthenticated: boolean;
-  userPermission: string;
+  userPermission: string ;
 };
 
 const initialState: AuthState = {
   token: null,
   isAuthenticated: false,
-  userPermission: "no_role_required",
+  userPermission: "",
 };
 
 type ResponseAuthType = {
