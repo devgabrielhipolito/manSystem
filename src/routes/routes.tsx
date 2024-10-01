@@ -6,44 +6,21 @@ import { Children } from "react";
 import SideNav from "../components/Sidenav";
 import { TypesRoutes } from "./types";
 import { userProvider } from "../utils/Permissions";
-
-export const privateRoutesss: RouteObject[] = [
-  {
-    element: <Dashboard />,
-    path: "/",
-
-    children: [
-      {
-        path: "teste",
-        element: <p>Logado</p>,
-      },
-    ],
-  },
-];
-
-export const publicRoutesss: RouteObject[] = [
-  {
-    element: <Login />,
-    path: "/",
-  },
-  {
-    element: <Register />,
-    path: "/register",
-  },
-];
+import { HomeIcon } from "../assets/Icons/HomeIcon";
+import { ConfigIcon } from "../assets/Icons/ConfigIcon";
 
 export const publicRoutes: TypesRoutes[] = [
   {
     element: <Login />,
     path: "/",
     key: "login",
-    permissions: [userProvider.NO_ROLE_REQUIRED, userProvider.boss],
+    permissions: [userProvider.NO_ROLE_REQUIRED, userProvider.NO_ROLE_REQUIRED],
   },
   {
     element: <p>So um boss pode visualizar esta rota</p>,
     path: "/boss",
     key: "boss",
-    permissions: [userProvider.boss],
+    permissions: [userProvider.NO_ROLE_REQUIRED],
   },
 ];
 
@@ -51,18 +28,20 @@ export const privateRoutes: TypesRoutes[] = [
   {
     element: <Dashboard />,
     path: "/",
+    icon: <HomeIcon />,
+    key: "Serviços",
     permissions: [userProvider.NO_ROLE_REQUIRED],
   },
 
   {
-    element: <p>Mais uma rota</p>,
+    element: <p>clientes</p>,
     path: "/clientes",
     key: "clientes",
     permissions: [userProvider.NO_ROLE_REQUIRED],
   },
 
   {
-    element: <p>Mais uma rota</p>,
+    element: <p>fornecedores</p>,
     path: "/fornecedores",
     key: "fornecedores",
     permissions: [userProvider.NO_ROLE_REQUIRED],
@@ -70,20 +49,16 @@ export const privateRoutes: TypesRoutes[] = [
 
   {
     element: <p>Mais uma rota</p>,
-    path: "/estoque",
-    key: "Estoque",
+    path: "/Relatorios",
+    key: "Relatorios",
     permissions: [userProvider.NO_ROLE_REQUIRED],
   },
+
   {
     element: <p>Mais uma rota</p>,
-    path: "/logs",
-    key: "logs",
-    permissions: [userProvider.NO_ROLE_REQUIRED],
-  },
-  {
-    element: <p>Mais uma rota</p>,
-    path: "/admin",
-    key: "admin",
+    path: "/settings",
+    icon: <ConfigIcon />,
+    key: "Configurações",
     permissions: [userProvider.NO_ROLE_REQUIRED],
   },
 ];

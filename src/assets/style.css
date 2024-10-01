@@ -7,3 +7,8 @@ html,
   text-decoration: none;
   list-style: none;
 }
+
+#iconsSidenav {
+  width: 25px;
+}
+

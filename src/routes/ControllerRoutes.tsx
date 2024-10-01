@@ -17,7 +17,7 @@ export default function ControllerRoutes() {
   );
   const isAuthenticated = useSelector(selectIIsAuthenticated);
   const { storageSetToken, storageToken } = useCache();
-  
+
   useEffect(() => {
     if (isAuthenticated) {
       storageSetToken(token);
@@ -50,10 +50,10 @@ export default function ControllerRoutes() {
       mappedRoutes.push(<Route path={path} element={element} key={key} />);
       return mappedRoutes as ReactElement[];
     });
-  }, [isAuthenticated]);
+  }, [isAuthenticated, token]);
 
   return (
-    <Box>
+    <Box display={"flex" } flexDirection={"row"} bgcolor={"#fff"} width={"100%"} height={"100vh"}>
       {isAuthenticated && <Sidenav routes={routes} />}
       <Routes>
         {getRoutes()}

@@ -17,7 +17,6 @@ export default function useCache() {
   const storageToken = useCallback(() => {
     const storageTokens = localStorage.getItem("TOKEN");
     if (storageTokens) {
-      console.log("s")
       dispatch(authenticationSucess(true));
       return true;
     }

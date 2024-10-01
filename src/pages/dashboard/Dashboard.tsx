@@ -4,9 +4,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 export const Dashboard = (): ReactElement => {
   return (
-    <Box>
+    <Box width={"100%"}>
       <h1>Você esta logado</h1>
-      <Outlet />
     </Box>
   );
 };

@@ -1,10 +1,11 @@
 import { createTheme } from "@mui/material";
 import { blueGrey } from "@mui/material/colors";
+import { pxToRem } from "../assets/themes/functions/pxToRem";
 
 export const Light = createTheme({
   palette: {
     primary: {
-      main: blueGrey[700],
+      main: "#fffff",
       dark: blueGrey[500],
       contrastText: "#ffffff",
     },
@@ -23,6 +24,16 @@ export const Light = createTheme({
       styleOverrides: {
         root: {
           textDecoration: "none",
+        },
+      },
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+          color:"#000",
+          textAlign:"left",
+          fontSize: pxToRem(14),
+          fontWeight: "normal",
         },
       },
     },
